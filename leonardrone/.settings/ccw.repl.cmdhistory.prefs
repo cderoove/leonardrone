@@ -1,2 +1,2 @@
-cmdhistory=["run clojure-leap.example.drone"]
+cmdhistory=["run clojure-leap.example.drone" "(use-ns 'leanordrone.core)" "(use 'leanordrone.core)"]
 eclipse.preferences.version=1

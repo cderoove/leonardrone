@@ -53,7 +53,8 @@
         screen-dim (dimensions screen)
         position (.intersect screen pointable true)]
     {:x (* (.getX position) (:width-px screen-dim))
-     :y (* (- 1 (.getY position)) (:height-px screen-dim))}))
+     :y (* (- 1 (.getY position)) (:height-px screen-dim))
+     :dim screen-dim}))
 
 (defn valid? [^Screen screen]
   (.isValid screen))
