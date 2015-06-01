@@ -1,13 +1,10 @@
 (ns leonardrone.core
   (:require [leonardrone.leapcontrol :as leapcontrol])
   (:require [clojure-leap.core :as leap])
-  (:require [quil.core :as q])
-  )
+  (:require [quil.core :as q]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(def not-nil? (complement nil?))
+
 
 (defn -main [& args]
   (let [listener (leap/listener 
