@@ -15,7 +15,7 @@
     (reset! toggle-threshold (+ gestures/*threshold* (.id frame))) ;; thresholds are (* 1.5 gesture-window)
     (println "Drone pen active:" @active?)))
 
-(defn process-frame [controller frame screens]
+(defn process-frame [controller frame screens toggle]
   (let [fingers (leap/fingers frame)
         toggle-switch? (gestures/finger-flash? (leap/frames controller gestures/*window*))
         _ (toggle! toggle-switch? frame)]
