@@ -1,3 +1,6 @@
 [submodule "clojure-leap"]
 	path = clojure-leap
 	url = https://github.com/ohpauleez/clojure-leap
+[submodule "clj-drone"]
+	path = clj-drone
+	url = https://github.com/gigasquid/clj-drone.git
