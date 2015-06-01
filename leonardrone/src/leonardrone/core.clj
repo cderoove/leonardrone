@@ -1,7 +1,7 @@
 (ns leonardrone.core
   (:require [leonardrone.leapcontrol :as leapcontrol])
   (:require [clojure-leap.core :as leap]))
-
+(def not-nil? (complement nil?))
 (defn foo
   "I don't do a whole lot."
   [x]
