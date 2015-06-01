@@ -22,6 +22,6 @@
     (when-let [pointable (and @active? (leap/pointables? frame) (first (leap/pointables frame)))]
       (let [position-map (l-screen/intersect-position screens pointable)]
         ;(.mouseMove robot (:x position-map)(:y position-map))
-        (println position-map)))))
+        position-map))))
 
 

@@ -8,8 +8,9 @@
   (println x "Hello, World!"))
 
 (defn -main [& args]
-  (let [listener (leap/listener :frame #(leapcontrol/process-frame (:controller %) (:frame %) (:screens %))
-                                :default #(println "Toggling" (:state %) "for listener:" (:listener %)))
+  (let [listener (leap/listener 
+                   :frame #(println (leapcontrol/process-frame (:controller %) (:frame %) (:screens %)))
+                              :default #(println "Toggling" (:state %) "for listener:" (:listener %)))
         [controller _] (leap/controller listener)]
     (println "Press Enter to quit")
     (read-line)
