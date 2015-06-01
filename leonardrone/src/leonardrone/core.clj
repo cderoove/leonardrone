@@ -9,20 +9,21 @@
 
 (def x (atom 0.5))
 (def y (atom 0.5))
+(def commands (atom []))
 
 (defn move
   [dx dy]
-  (left dx)
-  (up dy))
+  ; (swap! commands conj (fn [] (left dx) (up dy)))
+  (drone/left dx) (drone/back dy))
 
 (defn frame-processing
   [something]
   (let [position-map (leapcontrol/process-frame (:controller %) (:frame %) (:screens %))
-        current-x (:x position-map)
-        current-y (:y position-map)]
+        current-x (/ (:x position-map) (:width-px (:dim position-map)))
+        current-y (/ (:y position-map) (:height-px (:dim position-map)))]
     (move (- x current-x) (- y current-y))
     (swap! x current-x)
-    (swap! y current-x)))
+    (swap! y current-y)))
 
 (defn -main [& args]
   (let [listener (leap/listener
