@@ -1,0 +1,3 @@
+[submodule "clojure-leap"]
+	path = clojure-leap
+	url = https://github.com/ohpauleez/clojure-leap
