@@ -4,9 +4,6 @@
   (:require [quil.core :as q])
   (:require [leanordrone.drone :as drone]))
 
-
-(def not-nil? (complement nil?))
-
 (def x (atom 0.5))
 (def y (atom 0.5))
 (def commands (atom []))
@@ -35,23 +32,23 @@
     (read-line)
     (leap/remove-listener! controller listener)))
 
+
+
+;; Processing setup
+
 (defn setup []
   (q/smooth)                        
   (q/frame-rate 1)                    ;; Set framerate to 1 FPS
   (q/background 200))                
 
-
 (defn draw []
   (q/stroke 100)        
   (q/stroke-weight 5)       
   (q/fill 10)               
-  (let [diam            
-        x    (q/random (q/width))       ;; Set the x coord randomly within the sketch
-        y    (q/random (q/height))]     ;; Set the y coord randomly within the sketch
-    (q/ellipse x y diam diam)))         ;; Draw a circle at x y with the correct diameter
+  (q/ellipse @x @y 5 5))         
 
-(q/defsketch example                  ;; Define a new sketch named example
-  :title "Oh so many grey circles"    ;; Set the title of the sketch
-  :setup setup                        ;; Specify the setup fn
-  :draw draw                          ;; Specify the draw fn
+(q/defsketch example                 
+  :title "Leonardrone's Eazel"    
+  :setup setup                       
+  :draw draw                          
   :size [1280 800]) 
