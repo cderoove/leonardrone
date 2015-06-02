@@ -4,18 +4,18 @@
             [clojure-leap.gestures :as gestures])
   (:import (java.awt Robot)))
 
-(def active? (atom false)) ;; Should we be reacting to the leap?
+(def active? (atom true)) ;; Should we be reacting to the leap?
 (def toggle-threshold (atom 0)) ;; Remove thrashing from sliding-window gesture detection
 (def robot (Robot.))
 
 (defn toggle! [hit-it? frame]
   (when (and hit-it?
              (> (.id frame) @toggle-threshold)) ;; we're beyond the window of a previous gesture
-    (reset! active? (not @active?))
+    ; (reset! active? (not @active?))
     (reset! toggle-threshold (+ gestures/*threshold* (.id frame))) ;; thresholds are (* 1.5 gesture-window)
     (println "Drone pen active:" @active?)))
 
-(defn process-frame [controller frame screens toggle]
+(defn process-frame [controller frame screens]
   (let [fingers (leap/fingers frame)
         toggle-switch? (gestures/finger-flash? (leap/frames controller gestures/*window*))
         _ (toggle! toggle-switch? frame)]
